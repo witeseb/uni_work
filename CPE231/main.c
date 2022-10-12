@@ -6,7 +6,7 @@
 /*   By: tponark <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 03:34:42 by tponark           #+#    #+#             */
-/*   Updated: 2022/10/12 13:53:49 by tponark          ###   ########.fr       */
+/*   Updated: 2022/10/12 18:18:14 by tponark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,9 @@ int	main(void)
 
 	//Random temp
 	unsigned long	rand_temp;
+
+	//Clear Screen
+	system("clear");
 
 	//Input n & k
 	printf("\033[0;32m");
