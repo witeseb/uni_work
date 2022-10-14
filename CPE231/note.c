@@ -6,13 +6,13 @@
 /*   By: tponark <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/01 03:34:42 by tponark           #+#    #+#             */
-/*   Updated: 2022/10/10 09:50:49 by tponark          ###   ########.fr       */
+/*   Updated: 2022/10/14 18:44:34 by tponark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "projlib.h"
 
-void	ft_print_time(size_t array_s, int kth_pos, double run_t, char type);
+void	print_time(size_t array_s, int kth_pos, double run_t, char type);
 
 /*
 unsigned long x;
@@ -85,59 +85,59 @@ int	main(void)
 	printf("\033[0;32m");
 	printf("\nElements of the array before sorting:\n");
 	printf("\033[0m");
-	ft_putarray(mer_array, array_s);
+	putarray(mer_array, array_s);
 	printf("\n");
 	/*
-	ft_putarray(h_qui_array, array_s);
+	putarray(h_qui_array, array_s);
 	printf("\n");
-	ft_putarray(l_qui_array, array_s);
+	putarray(l_qui_array, array_s);
 	printf("\n");
-	ft_putarray(sel_array, array_s);
+	putarray(sel_array, array_s);
 	printf("\n");
 	*/
 	m_run_t = 0.0;
 	begin = clock();
-	ft_merge_sort(mer_array, 0, array_s - 1);
+	merge_sort(mer_array, 0, array_s - 1);
 	end = clock();
 	m_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 	/*
 	printf("\033[0;33m");
 	printf("\nElements of the array after merge-sorting:\n\n");
 	printf("\033[0m");
-	ft_putarray(mer_array, array_s);
+	putarray(mer_array, array_s);
 	*/
 	h_q_run_t = 0.0;
 	begin = clock();
-	ft_quick_sort_hoare(h_qui_array, 0, array_s - 1);
+	quick_sort_hoare(h_qui_array, 0, array_s - 1);
 	end = clock();
 	h_q_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 	/*
 	printf("\033[0;34m");
 	printf("\nElements of the array after quick-sorting using hoare partition:\n\n");
 	printf("\033[0m");
-	ft_putarray(h_qui_array, array_s);
+	putarray(h_qui_array, array_s);
 	*/
 	l_q_run_t = 0.0;
 	begin = clock();
-	ft_quick_sort_hoare(l_qui_array, 0, array_s - 1);
+	quick_sort_hoare(l_qui_array, 0, array_s - 1);
 	end = clock();
 	l_q_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 	/*
 	printf("\033[0;34m");
 	printf("\nElements of the array after quick-sorting using lomuto partition:\n\n");
 	printf("\033[0m");
-	ft_putarray(l_qui_array, array_s);
+	putarray(l_qui_array, array_s);
 	*/
 	s_run_t = 0.0;
 	begin = clock();
-	kth_element = ft_quick_select(sel_array, 0, array_s - 1, kth_pos);
+	kth_element = quick_select(sel_array, 0, array_s - 1, kth_pos);
 	end = clock();
 	s_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 	/*
 	printf("\033[0;34m");
 	printf("\nElements of the array after quick-selection:\n\n");
 	printf("\033[0m");
-	ft_putarray(sel_array, array_s);
+	putarray(sel_array, array_s);
 	*/
 	printf("\033[0;33m");
 	printf("%ld smallest elements from merge sort's array:\n", kth_pos);
@@ -150,7 +150,7 @@ int	main(void)
 			printf(", ");
 		i++;
 	}
-	//ft_putarray(mer_array, array_s);
+	//putarray(mer_array, array_s);
 	printf("\n");
 	printf("\033[0;34m");
 	printf("%ld smallest elements from hoare partition quick sort's array:\n", kth_pos);
@@ -163,7 +163,7 @@ int	main(void)
 			printf(", ");
 		i++;
 	}
-	//ft_putarray(h_qui_array, array_s);
+	//putarray(h_qui_array, array_s);
 	printf("\n");
 	printf("\033[0;34m");
 	printf("%ld smallest elements from lomuto partition quick sort's array:\n", kth_pos);
@@ -176,7 +176,7 @@ int	main(void)
 			printf(", ");
 		i++;
 	}
-	//ft_putarray(l_qui_array, array_s);
+	//putarray(l_qui_array, array_s);
 	printf("\n");
 	printf("\033[0;35m");
 	printf("%ld smallest elements from quick select's array:\n", kth_pos);
@@ -189,16 +189,16 @@ int	main(void)
 			printf(", ");
 		i++;
 	}
-	//ft_putarray(sel_array, array_s);
+	//putarray(sel_array, array_s);
 	printf("\n");
 	printf("\033[0;35m");
 	printf("The kth smallest element from quick select function is: ");
 	printf("\033[0m");
 	printf("%d\n", kth_element);
-	ft_print_time(array_s, kth_pos, m_run_t, 'm');
-	ft_print_time(array_s, kth_pos, h_q_run_t, 'h');
-	ft_print_time(array_s, kth_pos, l_q_run_t, 'l');
-	ft_print_time(array_s, kth_pos, s_run_t, 's');
+	print_time(array_s, kth_pos, m_run_t, 'm');
+	print_time(array_s, kth_pos, h_q_run_t, 'h');
+	print_time(array_s, kth_pos, l_q_run_t, 'l');
+	print_time(array_s, kth_pos, s_run_t, 's');
 	free(mer_array);
 	free(h_qui_array);
 	free(l_qui_array);
@@ -207,7 +207,7 @@ int	main(void)
 	return (0);
 }
 
-void	ft_print_time(size_t array_s, int kth_pos, double run_t, char type)
+void	print_time(size_t array_s, int kth_pos, double run_t, char type)
 {
 	if (type == 'm')
 	{

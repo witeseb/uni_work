@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   projlib.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tponark <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tponark <tponark@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 00:17:38 by tponark           #+#    #+#             */
-/*   Updated: 2022/10/12 18:18:19 by tponark          ###   ########.fr       */
+/*   Created: 2022/10/14 18:25:43 by tponark           #+#    #+#             */
+/*   Updated: 2022/10/14 18:25:47 by tponark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,22 @@
 # include <time.h>
 
 //Utilities
-void	ft_swap(int *a, int *b);
-void    ft_putarray(int array[], size_t size);
+void	swap(int *a, int *b);
+void    putarray(int array[], size_t size);
 
 //Merge sort functions
-void	ft_merge_array(int array[], int left, int mid, int right);
-void    ft_merge_sort(int array[], int left, int right);
+void	merge_array(int array[], int left, int mid, int right);
+void    merge_sort(int array[], int left, int right);
 
 //Partitioning
-int		ft_hoare(int array[], int left, int right);
-int		ft_lomuto(int array[], size_t left, size_t right);
+int		hoare(int array[], int left, int right);
+int		lomuto(int array[], size_t left, size_t right);
 
 //Quick sort functions
-void	ft_quick_sort_hoare(int array[], int left, int right);
-void	ft_quick_sort_lomuto(int array[], int left, int right);
+void	quick_sort_hoare(int array[], int left, int right);
+void	quick_sort_lomuto(int array[], int left, int right);
 
 //Quick select functions
-int		ft_quick_select(int array[], size_t left, size_t right, int k);
+int		quick_select(int array[], size_t left, size_t right, int k);
 
 #endif

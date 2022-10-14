@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tponark <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: tponark <tponark@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/01 03:34:42 by tponark           #+#    #+#             */
-/*   Updated: 2022/10/12 18:18:14 by tponark          ###   ########.fr       */
+/*   Created: 2022/10/14 18:31:35 by tponark           #+#    #+#             */
+/*   Updated: 2022/10/14 18:32:03 by tponark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "projlib.h"
 
-void	ft_print_time(size_t array_s, int kth_pos, double run_t, char type);
+void	print_time(size_t array_s, int kth_pos, double run_t, char type);
 
 int	main(void)
 {
@@ -111,34 +111,34 @@ int	main(void)
 	printf("\033[0;32m");
 	printf("\nElements of the array before sorting:\n");
 	printf("\033[0m");
-	ft_putarray(mer_array, array_s);
+	putarray(mer_array, array_s);
 	printf("\n");
 
 	//Merge sort
 	m_run_t = 0.0;
 	begin = clock();
-	ft_merge_sort(mer_array, 0, array_s - 1);
+	merge_sort(mer_array, 0, array_s - 1);
 	end = clock();
 	m_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 
 	//Quick sort with Hoare partitioning
 	h_q_run_t = 0.0;
 	begin = clock();
-	ft_quick_sort_hoare(h_qui_array, 0, array_s - 1);
+	quick_sort_hoare(h_qui_array, 0, array_s - 1);
 	end = clock();
 	h_q_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 
 	//Quick sort with Lomuto partitioning
 	l_q_run_t = 0.0;
 	begin = clock();
-	ft_quick_sort_hoare(l_qui_array, 0, array_s - 1);
+	quick_sort_lomuto(l_qui_array, 0, array_s - 1);
 	end = clock();
 	l_q_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 
 	//Quick select
 	s_run_t = 0.0;
 	begin = clock();
-	kth_element = ft_quick_select(sel_array, 0, array_s - 1, kth_pos);
+	kth_element = quick_select(sel_array, 0, array_s - 1, kth_pos);
 	end = clock();
 	s_run_t += (double)(end - begin) / CLOCKS_PER_SEC;
 
@@ -206,10 +206,10 @@ int	main(void)
 	printf("%d\n", kth_element);
 
 	//Time printing
-	ft_print_time(array_s, kth_pos, m_run_t, 'm');
-	ft_print_time(array_s, kth_pos, h_q_run_t, 'h');
-	ft_print_time(array_s, kth_pos, l_q_run_t, 'l');
-	ft_print_time(array_s, kth_pos, s_run_t, 's');
+	print_time(array_s, kth_pos, m_run_t, 'm');
+	print_time(array_s, kth_pos, h_q_run_t, 'h');
+	print_time(array_s, kth_pos, l_q_run_t, 'l');
+	print_time(array_s, kth_pos, s_run_t, 's');
 
 	//Freeing memories
 	free(mer_array);
@@ -220,21 +220,21 @@ int	main(void)
 	return (0);
 }
 
-void	ft_print_time(size_t array_s, int kth_pos, double run_t, char type)
+void	print_time(size_t array_s, int kth_pos, double run_t, char type)
 {
 	if (type == 'm')
 	{
 		printf("\033[0;33m");
 		printf("\nTime elapse for merge sort with n = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%ld", array_s);
 		printf("\033[0;33m");
 		printf(" and k = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%d", kth_pos);
 		printf("\033[0;33m");
 		printf(" is ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%lf", run_t);
 		printf("\033[0;33m");
 		printf(" seconds.");
@@ -244,15 +244,15 @@ void	ft_print_time(size_t array_s, int kth_pos, double run_t, char type)
 	{
 		printf("\033[0;34m");
 		printf("\nTime elapse for quick sort using lomuto partition with n = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%ld", array_s);
 		printf("\033[0;34m");
 		printf(" and k = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%d", kth_pos);
 		printf("\033[0;34m");
 		printf(" is ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%lf", run_t);
 		printf("\033[0;34m");
 		printf(" seconds.");
@@ -262,15 +262,15 @@ void	ft_print_time(size_t array_s, int kth_pos, double run_t, char type)
 	{
 		printf("\033[0;34m");
 		printf("\nTime elapse for quick sort using hoare partition with n = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%ld", array_s);
 		printf("\033[0;34m");
 		printf(" and k = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%d", kth_pos);
 		printf("\033[0;34m");
 		printf(" is ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%lf", run_t);
 		printf("\033[0;34m");
 		printf(" seconds.");
@@ -280,15 +280,15 @@ void	ft_print_time(size_t array_s, int kth_pos, double run_t, char type)
 	{
 		printf("\033[0;35m");
 		printf("\nTime elapse for quick select with n = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%ld", array_s);
 		printf("\033[0;35m");
 		printf(" and k = ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%d", kth_pos);
 		printf("\033[0;35m");
 		printf(" is ");
-		printf("\033[1;31m");
+		printf("\033[0;31m");
 		printf("%lf", run_t);
 		printf("\033[0;35m");
 		printf(" seconds.");

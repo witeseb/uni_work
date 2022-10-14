@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tponark <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: tponark <tponark@student.42bangkok.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/08/27 01:55:27 by tponark           #+#    #+#              #
-#    Updated: 2022/10/12 13:34:22 by tponark          ###   ########.fr        #
+#    Created: 2022/10/14 18:25:19 by tponark           #+#    #+#              #
+#    Updated: 2022/10/14 18:25:23 by tponark          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ MAKEFLAGS = -r
 CFLAGS = -Wall -Wextra -Werror
 NAME = projlib.a
 MAIN = main.c
-SRCS = ft_merge_array.c ft_merge_sort.c ft_putarray.c ft_swap.c ft_hoare.c \
-		ft_quick_sort_hoare.c ft_quick_sort_lomuto.c ft_lomuto.c ft_quick_select.c \
+SRCS = merge_array.c merge_sort.c putarray.c swap.c hoare.c \
+		quick_sort_hoare.c quick_sort_lomuto.c lomuto.c quick_select.c \
 
 OBJS = $(SRCS:.c=.o)
 
