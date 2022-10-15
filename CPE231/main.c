@@ -6,7 +6,7 @@
 /*   By: tponark <tponark@student.42bangkok.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 18:31:35 by tponark           #+#    #+#             */
-/*   Updated: 2022/10/14 18:32:03 by tponark          ###   ########.fr       */
+/*   Updated: 2022/10/15 18:09:04 by tponark          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ int	main(void)
 	double			h_q_run_t;
 	double			l_q_run_t;
 	double			s_run_t;
+	double			total_run_t;
+	clock_t			total_begin;
+	clock_t			total_end;
 	clock_t			begin;
 	clock_t			end;
 
@@ -77,6 +80,8 @@ int	main(void)
 		return (-1);
 	}
 
+	total_run_t = 0.0;
+	total_begin = clock();
 	//Memory allocation for arrays
 	mer_array = malloc(array_s * sizeof(int));
 	if (!mer_array)
@@ -99,7 +104,7 @@ int	main(void)
 		rand_temp = rand();
 		rand_temp <<= 15;
 		rand_temp ^= rand();
-		rand_temp %= 10000001;
+		rand_temp %= 100000001;
 		mer_array[i] = rand_temp;
 		h_qui_array[i] = mer_array[i];
 		l_qui_array[i] = mer_array[i];
@@ -108,11 +113,13 @@ int	main(void)
 	}
 
 	//Display the element of array before sorting
+	/*
 	printf("\033[0;32m");
 	printf("\nElements of the array before sorting:\n");
 	printf("\033[0m");
 	putarray(mer_array, array_s);
 	printf("\n");
+	*/
 
 	//Merge sort
 	m_run_t = 0.0;
@@ -204,12 +211,16 @@ int	main(void)
 	printf("The kth smallest element from quick select function is: ");
 	printf("\033[0m");
 	printf("%d\n", kth_element);
+	
+	total_end = clock();
+	total_run_t += (double)(total_end - total_begin) / CLOCKS_PER_SEC;
 
 	//Time printing
 	print_time(array_s, kth_pos, m_run_t, 'm');
 	print_time(array_s, kth_pos, h_q_run_t, 'h');
 	print_time(array_s, kth_pos, l_q_run_t, 'l');
 	print_time(array_s, kth_pos, s_run_t, 's');
+	print_time(array_s, kth_pos, total_run_t, 't');
 
 	//Freeing memories
 	free(mer_array);
@@ -291,6 +302,16 @@ void	print_time(size_t array_s, int kth_pos, double run_t, char type)
 		printf("\033[0;31m");
 		printf("%lf", run_t);
 		printf("\033[0;35m");
+		printf(" seconds.");
+		printf("\033[0m");
+	}
+	else if (type == 't')
+	{
+		printf("\033[0;32m");
+		printf("\nTotal time elapse is ");
+		printf("\033[0;31m");
+		printf("%lf", run_t);
+		printf("\033[0;32m");
 		printf(" seconds.");
 		printf("\033[0m");
 	}
